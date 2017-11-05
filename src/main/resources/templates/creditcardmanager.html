@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+	<title>Credit Card Management</title>
+	<link href="../../lib/bootstrap/css/bootstrap.min.css" th:href="@{/lib/bootstrap/css/bootstrap.min.css}" rel="stylesheet" type="text/css" />
+	<link href="../../lib/bootstrap/css/bootstrap-theme.min.css" th:href="@{/lib/bootstrap/css/bootstrap-theme.min.css}" rel="stylesheet" type="text/css" />
+	<link href="../../css/app.css" th:href="@{/css/app.css}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<nav class="navbar navbar-default">
+		
+		<div class="container-fluid">
+			
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">CCM</a>
+			</div>
+
+			<div class="navbar-text" th:inline="text">logged as : [[${#httpServletRequest.remoteUser}]]</div>
+	     
+			<form th:action="@{/logout}" method="post" class="navbar-form navbar-left">
+				<input type="submit" value="Sign Out" class="btn btn-default"/>
+			</form>
+		</div>
+	</nav>
+	<div class="container-fluid">
+				
+		<div id="displayStatus" role="alert"></div>
+		
+		<form id="createCard" class="form-inline">
+		
+			<div class="form-group">
+				<label for="cardNumber">Card Number</label> 
+				<input type="text" class="form-control" id="cardNumber" placeholder="Card Number" />
+			</div>
+			<br /><br/>
+			<div class="form-group">
+			
+				<label for="expiryMonth">Month</label> 
+				<input type="text"	class="form-control" id="expiryMonth" placeholder="MM" /> 
+				
+				<label for="expiryYear">Year</label> 
+				<input type="text" class="form-control" id="expiryYear" placeholder="YY" />
+			</div>
+			<br/><br/>
+			<div class="form-group">
+				<label for="cardOwner">Card Owner</label> 
+				<input type="text" class="form-control" id="cardOwner" placeholder="Name on the card" />
+			</div>
+			
+			<input id="username" type="hidden" th:value="${#httpServletRequest.remoteUser}" /> 
+			<input id="csrf" type="hidden" th:value="${_csrf.token}" />
+			
+			<button id="saveCreditCard" type="submit" class="btn btn-default">Save Credit Card</button>
+		</form>
+		<br /> <hr /> <br />
+		<form id="creditCardSearch" class="form-inline">
+			<div class="form-group">
+				<label for="cardNumberSearch">Card Number</label> 
+				<input id="cardNumberSearch" type="text" class="form-control" placeholder="Card Number" />
+			</div>
+			
+			<input id="usernameSearch" type="hidden" th:value="${#httpServletRequest.remoteUser}" /> 
+			<input id="csrfSearch" type="hidden" th:value="${_csrf.token}" />
+			
+			<button id="saveCreditCard" type="submit" class="btn btn-default">Search</button>
+		</form>
+		<br/>
+		<table id="creditCardInfo" class="table">
+			<tr>
+				<th>Id</th>
+				<th>User Id</th>
+				<th>Card Number</th>
+				<th>Expiry Date</th>
+				<th>Owner</th>
+			</tr>
+		</table>
+	</div>
+
+	<script src="../../lib/jquery/jquery-3.2.1.min.js" th:src="@{/lib/jquery/jquery-3.2.1.min.js}"></script>
+	<script src="../../lib/bootstrap/js/bootstrap.min.js" th:src="@{/lib/bootstrap/js/bootstrap.min.js}"></script>
+	<script src="../../js/creditcardmanager.js" th:src="@{/js/creditcardmanager.js}"></script>
+</body>
+</html>
