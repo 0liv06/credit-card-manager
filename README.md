@@ -9,12 +9,13 @@ These instructions will guide you to setup and run the application.
 ### Prerequities
 
 You need a Database instance running (MySQL). For other Databases, you may have to update the pom.xml file to add your DB implementation.
+Please follow : https://dev.mysql.com/doc/refman/5.7/en/windows-installation.html to install it on Windows, https://dev.mysql.com/doc/refman/5.7/en/osx-installation.html for the installation guide on OS X or https://dev.mysql.com/doc/refman/5.7/en/linux-installation.html for the Linux installation.
 
 ### Setup the Database
-Step 1 : Run /src/main/resources/scripts/ccmanagement_create_db.sql script
-Step 2 : Run /src/main/resources/scripts/ccmanagement_user.sql script
-Step 3 : Run /src/main/resources/scripts/ccmanagement_credit_card.sql script
-Step 4 : Go to /src/main/resources/application.properties file and update the username and password for your DB
+- Step 1 : Run /src/main/resources/scripts/ccmanagement_create_db.sql script
+- Step 2 : Run /src/main/resources/scripts/ccmanagement_user.sql script
+- Step 3 : Run /src/main/resources/scripts/ccmanagement_credit_card.sql script
+- Step 4 : Go to /src/main/resources/application.properties file and update the username and password for your DB
 
 NB : Feeling lazy ? Just do step 1 and change the value of spring.jpa.hibernate.ddl-auto to create
 
